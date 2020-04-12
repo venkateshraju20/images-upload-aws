@@ -1,0 +1,54 @@
+package code.boot.img.upload.entity;
+
+import java.util.Objects;
+import java.util.Optional;
+import java.util.UUID;
+
+public class UserProfile {
+
+	private final UUID userProfileId;
+	private final String userName;
+	private String profileImageLink;
+
+	public UserProfile(UUID userProfileId, String userName, String profileImageLink) {
+		super();
+		this.userProfileId = userProfileId;
+		this.userName = userName;
+		this.profileImageLink = profileImageLink;
+	}
+
+	public UUID getUserProfileId() {
+		return userProfileId;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public Optional<String> getProfileImageLink() {
+		return Optional.ofNullable(profileImageLink);
+	}
+
+	public void setProfileImageLink(String profileImageLink) {
+		this.profileImageLink = profileImageLink;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(profileImageLink, userName, userProfileId);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		UserProfile other = (UserProfile) obj;
+		return Objects.equals(profileImageLink, other.profileImageLink) && Objects.equals(userName, other.userName)
+				&& Objects.equals(userProfileId, other.userProfileId);
+	}
+
+}
